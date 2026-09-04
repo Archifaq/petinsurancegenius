@@ -21,6 +21,8 @@ Read and follow these files:
 
 Treat `03-codex-master-prompt.md` as the primary implementation contract for Codex.
 Treat `04-legal-compliance-checklist.md` as hard constraints, not optional polish.
+Treat `CURRENT_PROJECT_STATE.md` and the latest accepted checkpoint review pack as
+the current implementation baseline when writing new Codex prompts.
 
 ## What the Site Is
 
@@ -43,6 +45,16 @@ When reviewing Codex output, prioritize:
 5. Content-quality safeguards against thin programmatic pages.
 6. Minimal, fast Astro architecture.
 7. Clean implementation that fits the existing codebase.
+
+## Current Baseline
+
+Checkpoint 5 plus its follow-up pillar-link fix is the latest accepted
+implementation baseline. The site currently has Astro 5.18.2, official `glob()`
+content loaders, seven flat URL content collections, 36 unique content slugs,
+sitemap noindex exclusion, robots support, disclosure/privacy/guide routes, all
+collection templates in `src/pages/[slug].astro`, two species pillar pages, six
+content pages set to `noindex: false`, and 30 content pages still held at
+`noindex: true`.
 
 ## Hard Stops
 

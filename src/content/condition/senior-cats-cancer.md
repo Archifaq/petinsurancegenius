@@ -5,10 +5,11 @@ slug: "pet-insurance-for-senior-cats-with-cancer"
 publishDate: "2026-09-04"
 updatedDate: "2026-09-04"
 noindex: true
-pillarSlug: "pet-insurance-guide"
+pillarSlug: "cat-insurance-guide"
 relatedSlugs:
   - "pet-insurance-for-maine-coons-hereditary-conditions"
   - "lemonade-vs-spot-for-cats"
+  - "cat-insurance-guide"
 condition: "Cancer"
 species: "cat"
 faq:

@@ -5,10 +5,11 @@ slug: "pets-best-vs-metlife-for-senior-dogs"
 publishDate: "2026-09-04"
 updatedDate: "2026-09-04"
 noindex: true
-pillarSlug: "pet-insurance-guide"
+pillarSlug: "dog-insurance-guide"
 relatedSlugs:
   - "pet-insurance-for-senior-dogs-in-texas"
   - "pet-insurance-for-emergency-vet-visits"
+  - "dog-insurance-guide"
 carriers:
   - "Pets Best"
   - "MetLife"

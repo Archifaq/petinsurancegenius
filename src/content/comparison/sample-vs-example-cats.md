@@ -5,10 +5,11 @@ slug: "pet-insurance-for-cats-sample-vs-example"
 publishDate: "2026-09-04"
 updatedDate: "2026-09-04"
 noindex: true
-pillarSlug: "pet-insurance-guide"
+pillarSlug: "cat-insurance-guide"
 relatedSlugs:
   - "sample-partner-review"
   - "lemonade-vs-spot-for-cats"
+  - "cat-insurance-guide"
 carriers:
   - "Sample Partner"
   - "Example Provider"

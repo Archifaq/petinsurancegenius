@@ -41,4 +41,5 @@ Return for review:
 - SEO/technical checklist status.
 - Judgment calls.
 - Skipped or noindexed pages and why.
+- Full code for new/changed files, or a single review pack containing the full code.
 ```

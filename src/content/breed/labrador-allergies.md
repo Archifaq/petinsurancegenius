@@ -5,10 +5,11 @@ slug: "pet-insurance-for-labradors-with-allergies"
 publishDate: "2026-09-04"
 updatedDate: "2026-09-04"
 noindex: true
-pillarSlug: "pet-insurance-guide"
+pillarSlug: "dog-insurance-guide"
 relatedSlugs:
   - "pet-insurance-for-dogs-with-allergies"
   - "switching-pet-insurance-providers"
+  - "dog-insurance-guide"
 breed: "Labrador Retriever"
 species: "dog"
 faq:

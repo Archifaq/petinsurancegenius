@@ -5,10 +5,11 @@ slug: "lemonade-pet-insurance-review-for-cats"
 publishDate: "2026-09-04"
 updatedDate: "2026-09-04"
 noindex: true
-pillarSlug: "pet-insurance-guide"
+pillarSlug: "cat-insurance-guide"
 relatedSlugs:
   - "lemonade-vs-spot-for-cats"
   - "pet-insurance-for-senior-cats-with-cancer"
+  - "cat-insurance-guide"
 carrier: "Lemonade"
 faq:
   - question: "Does this review include star ratings?"

@@ -5,10 +5,11 @@ slug: "lemonade-vs-spot-for-cats"
 publishDate: "2026-09-04"
 updatedDate: "2026-09-04"
 noindex: true
-pillarSlug: "pet-insurance-guide"
+pillarSlug: "cat-insurance-guide"
 relatedSlugs:
   - "lemonade-pet-insurance-review-for-cats"
   - "pet-insurance-for-maine-coons-hereditary-conditions"
+  - "cat-insurance-guide"
 carriers:
   - "Lemonade"
   - "Spot"

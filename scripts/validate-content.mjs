@@ -1,6 +1,4 @@
-import fs from "node:fs";
-if (!fs.existsSync(".astro/data-store.json")) { console.log("⚠️ .astro/data-store.json not found, skipping validation."); process.exit(0); }
-import { mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { parse } from "devalue";
 
@@ -17,8 +15,14 @@ const collections = [
   "blog"
 ];
 
+if (!existsSync(contentStorePath)) {
+  console.log(".astro/data-store.json not found, skipping validation.");
+  process.exit(0);
+}
+
 const store = parse(readFileSync(contentStorePath, "utf8"));
 const slugs = new Map();
+const references = [];
 const noindexPaths = [];
 const errors = [];
 
@@ -52,17 +56,40 @@ function readFrontmatter(filePath) {
   }
 
   const frontmatter = {};
+  let activeArray;
 
   for (const line of match[1].split("\n")) {
-    const slugMatch = line.match(/^slug:\s*["']?([^"']+)["']?\s*$/);
-    const noindexMatch = line.match(/^noindex:\s*(true|false)\s*$/);
+    const keyMatch = line.match(/^([A-Za-z][A-Za-z0-9]*):\s*(.*)$/);
+    const arrayItemMatch = line.match(/^\s*-\s*["']?([^"']+)["']?\s*$/);
 
-    if (slugMatch) {
-      frontmatter.slug = slugMatch[1].trim();
+    if (activeArray && arrayItemMatch) {
+      frontmatter[activeArray].push(arrayItemMatch[1].trim());
+      continue;
     }
 
-    if (noindexMatch) {
-      frontmatter.noindex = noindexMatch[1] === "true";
+    if (!keyMatch) {
+      continue;
+    }
+
+    const [, key, rawValue] = keyMatch;
+    activeArray = undefined;
+
+    if (rawValue.length === 0) {
+      if (key === "relatedSlugs") {
+        activeArray = key;
+        frontmatter[key] = [];
+      }
+      continue;
+    }
+
+    const value = rawValue.replace(/^["']|["']$/g, "").trim();
+
+    if (key === "slug" || key === "pillarSlug") {
+      frontmatter[key] = value;
+    }
+
+    if (key === "noindex" && /^(true|false)$/.test(value)) {
+      frontmatter.noindex = value === "true";
     }
   }
 
@@ -95,6 +122,29 @@ for (const collection of collections) {
 
     if (frontmatter.noindex !== false) {
       noindexPaths.push(normalizedPath(slug));
+    }
+
+    references.push({
+      filePath,
+      slug,
+      pillarSlug: frontmatter.pillarSlug,
+      relatedSlugs: frontmatter.relatedSlugs ?? []
+    });
+  }
+}
+
+for (const reference of references) {
+  if (reference.pillarSlug && !slugs.has(reference.pillarSlug)) {
+    errors.push(
+      `Unknown pillarSlug "${reference.pillarSlug}" in ${reference.filePath}`
+    );
+  }
+
+  for (const relatedSlug of reference.relatedSlugs) {
+    if (relatedSlug === reference.slug) {
+      errors.push(`Self-referential relatedSlug "${relatedSlug}" in ${reference.filePath}`);
+    } else if (!slugs.has(relatedSlug)) {
+      errors.push(`Unknown relatedSlug "${relatedSlug}" in ${reference.filePath}`);
     }
   }
 }

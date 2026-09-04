@@ -5,10 +5,11 @@ slug: "just-adopted-a-puppy-pet-insurance"
 publishDate: "2026-09-04"
 updatedDate: "2026-09-04"
 noindex: true
-pillarSlug: "pet-insurance-guide"
+pillarSlug: "dog-insurance-guide"
 relatedSlugs:
   - "pet-insurance-waiting-period-for-cruciate-ligament"
   - "pet-insurance-before-surgery"
+  - "dog-insurance-guide"
 category: "New pets"
 faq:
   - question: "Should puppy owners wait until something happens?"

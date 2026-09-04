@@ -5,10 +5,11 @@ slug: "pet-insurance-for-senior-dogs-in-texas"
 publishDate: "2026-09-04"
 updatedDate: "2026-09-04"
 noindex: true
-pillarSlug: "pet-insurance-guide"
+pillarSlug: "dog-insurance-guide"
 relatedSlugs:
   - "pet-insurance-texas"
   - "pets-best-vs-metlife-for-senior-dogs"
+  - "dog-insurance-guide"
 breed: "Senior dog"
 species: "dog"
 faq:

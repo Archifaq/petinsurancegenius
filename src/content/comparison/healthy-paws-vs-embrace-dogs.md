@@ -5,10 +5,11 @@ slug: "healthy-paws-vs-embrace-for-dogs"
 publishDate: "2026-09-04"
 updatedDate: "2026-09-04"
 noindex: true
-pillarSlug: "pet-insurance-guide"
+pillarSlug: "dog-insurance-guide"
 relatedSlugs:
   - "embrace-pet-insurance-cost-review"
   - "pet-insurance-for-german-shepherds-with-hip-dysplasia"
+  - "dog-insurance-guide"
 carriers:
   - "Healthy Paws"
   - "Embrace"

@@ -7,7 +7,7 @@ Use this protocol whenever the owner uploads a Codex checkpoint.
 Ask the owner for these if missing:
 
 - Codex checkpoint summary.
-- Files changed or relevant code snapshot.
+- Full code for files changed, or a single review pack containing the full code.
 - Build/test results.
 - Any known judgment calls or skipped/noindexed pages.
 

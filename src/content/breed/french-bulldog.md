@@ -5,9 +5,10 @@ slug: "pet-insurance-for-french-bulldogs"
 publishDate: "2026-09-04"
 updatedDate: "2026-09-04"
 noindex: true
-pillarSlug: "pet-insurance-guide"
+pillarSlug: "dog-insurance-guide"
 relatedSlugs:
   - "pet-insurance-hip-dysplasia"
+  - "dog-insurance-guide"
   - "pet-insurance-california"
 breed: "French Bulldog"
 species: "dog"

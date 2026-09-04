@@ -5,10 +5,11 @@ slug: "pet-insurance-for-golden-retrievers-with-hip-dysplasia"
 publishDate: "2026-09-04"
 updatedDate: "2026-09-04"
 noindex: true
-pillarSlug: "pet-insurance-guide"
+pillarSlug: "dog-insurance-guide"
 relatedSlugs:
   - "pet-insurance-hip-dysplasia"
   - "pet-insurance-waiting-period-for-cruciate-ligament"
+  - "dog-insurance-guide"
 breed: "Golden Retriever"
 species: "dog"
 faq:

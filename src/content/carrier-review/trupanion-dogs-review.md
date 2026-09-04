@@ -5,10 +5,11 @@ slug: "trupanion-pet-insurance-review-for-dogs"
 publishDate: "2026-09-04"
 updatedDate: "2026-09-04"
 noindex: true
-pillarSlug: "pet-insurance-guide"
+pillarSlug: "dog-insurance-guide"
 relatedSlugs:
   - "healthy-paws-vs-embrace-for-dogs"
   - "pet-insurance-for-dogs-with-allergies"
+  - "dog-insurance-guide"
 carrier: "Trupanion"
 faq:
   - question: "Should provider terms be checked before purchase?"

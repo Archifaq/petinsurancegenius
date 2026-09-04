@@ -5,10 +5,11 @@ slug: "pet-insurance-for-maine-coons-hereditary-conditions"
 publishDate: "2026-09-04"
 updatedDate: "2026-09-04"
 noindex: true
-pillarSlug: "pet-insurance-guide"
+pillarSlug: "cat-insurance-guide"
 relatedSlugs:
   - "pet-insurance-for-senior-cats-with-cancer"
   - "pet-insurance-for-cats-sample-vs-example"
+  - "cat-insurance-guide"
 breed: "Maine Coon"
 species: "cat"
 faq:

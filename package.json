@@ -6,8 +6,9 @@
   "scripts": {
     "predev": "npm run prepare-content-index",
     "dev": "astro dev",
-    "prepare-content-index": "astro sync",
-    "build": "astro build && node scripts/validate-content.mjs",
+    "prepare-content-index": "astro sync && node scripts/validate-content.mjs",
+    "prebuild": "npm run prepare-content-index",
+    "build": "astro check && astro build",
     "preview": "astro preview"
   },
   "dependencies": {

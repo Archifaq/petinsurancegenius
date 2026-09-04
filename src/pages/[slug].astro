@@ -16,6 +16,13 @@ const pageLabels = {
 
 type SupportedCollection = keyof typeof pageLabels;
 
+function humanizeSlug(slug: string) {
+  return slug
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
+
 export async function getStaticPaths() {
   const collectionNames = [
     "guide",
@@ -47,19 +54,18 @@ const affiliateOffers = entry.data.affiliateOffers.map((offer) => ({
   resolvedOffer: getAffiliateOffer(offer.carrierSlug)
 }));
 const hasAffiliateOffers = affiliateOffers.length > 0;
+const guideEntries = await getCollection("guide");
+const pillarEntry = guideEntries.find((guideEntry) => guideEntry.id === entry.data.pillarSlug);
 const relatedLinks = [
   entry.id !== entry.data.pillarSlug
     ? {
         slug: entry.data.pillarSlug,
-        title: "Pet Insurance Guide"
+        title: pillarEntry?.data.title ?? humanizeSlug(entry.data.pillarSlug)
       }
     : undefined,
   ...entry.data.relatedSlugs.map((slug) => ({
     slug,
-    title: slug
-      .split("-")
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(" ")
+    title: humanizeSlug(slug)
   }))
 ].filter(Boolean) as { slug: string; title: string }[];
 const breadcrumbJsonLd = {

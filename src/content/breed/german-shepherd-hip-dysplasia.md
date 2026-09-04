@@ -5,10 +5,11 @@ slug: "pet-insurance-for-german-shepherds-with-hip-dysplasia"
 publishDate: "2026-09-04"
 updatedDate: "2026-09-04"
 noindex: true
-pillarSlug: "pet-insurance-guide"
+pillarSlug: "dog-insurance-guide"
 relatedSlugs:
   - "pet-insurance-hip-dysplasia"
   - "pet-insurance-for-golden-retrievers-with-hip-dysplasia"
+  - "dog-insurance-guide"
 breed: "German Shepherd"
 species: "dog"
 faq:

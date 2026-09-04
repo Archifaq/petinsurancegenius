@@ -5,10 +5,11 @@ slug: "pet-insurance-for-french-bulldogs-with-pre-existing-conditions"
 publishDate: "2026-09-04"
 updatedDate: "2026-09-04"
 noindex: true
-pillarSlug: "pet-insurance-guide"
+pillarSlug: "dog-insurance-guide"
 relatedSlugs:
   - "pet-insurance-for-french-bulldogs"
   - "switching-pet-insurance-providers"
+  - "dog-insurance-guide"
 condition: "Pre-existing conditions"
 species: "dog"
 faq:
