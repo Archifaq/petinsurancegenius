@@ -27,7 +27,15 @@ const { title, description, canonicalUrl, noindex = true, jsonLd = [] } = Astro.
     <meta property="og:type" content="article" />
     <meta name="twitter:card" content="summary" />
     {jsonLd.map((schema) => <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />)}
-  </head>
+    <!-- Google tag (gtag.js) -->
+  <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-RLFG2NVRK7"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-RLFG2NVRK7");
+  </script>
+</head>
   <body>
     <div class="site-shell">
       <header class="site-header">
