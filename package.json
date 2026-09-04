@@ -1,0 +1,24 @@
+{
+  "name": "petinsurancegenius.com",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "predev": "npm run prepare-content-index",
+    "dev": "astro dev",
+    "prepare-content-index": "astro sync && node scripts/validate-content.mjs",
+    "prebuild": "npm run prepare-content-index",
+    "build": "astro check && astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "^12.0.0",
+    "@astrojs/sitemap": "^3.3.1",
+    "astro": "^5.13.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "devalue": "5.9.2",
+    "typescript": "^5.9.2"
+  }
+}

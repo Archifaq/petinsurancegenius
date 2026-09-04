@@ -1,0 +1,17 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const title = "Pet Insurance Genius";
+const description = "Independent pet insurance guides, comparisons, and state-by-state explainers for US pet owners.";
+const canonicalUrl = new URL("/", Astro.site ?? Astro.url).toString();
+---
+
+<BaseLayout title={title} description={description} canonicalUrl={canonicalUrl} noindex={false}>
+  <section>
+    <h1>{title}</h1>
+    <p>{description}</p>
+    <p>
+      Compare policy terms, exclusions, waiting periods, and provider availability before continuing to a carrier or comparison partner for a real quote.
+    </p>
+  </section>
+</BaseLayout>

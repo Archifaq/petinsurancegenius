@@ -1,0 +1,148 @@
+---
+import Footer from "@/components/Footer.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalUrl: string;
+  noindex?: boolean;
+  jsonLd?: Record<string, unknown>[];
+}
+
+const { title, description, canonicalUrl, noindex = true, jsonLd = [] } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    {noindex && <meta name="robots" content="noindex,follow" />}
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:type" content="article" />
+    <meta name="twitter:card" content="summary" />
+    {jsonLd.map((schema) => <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />)}
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <a class="brand" href="/">Pet Insurance Genius</a>
+        <nav aria-label="Primary">
+          <a href="/pet-insurance-guide/">Guide</a>
+          <a href="/pet-insurance-california/">By State</a>
+        </nav>
+      </header>
+      <main>
+        <slot />
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    color: #18221d;
+    background: #fbfcf9;
+    font-family:
+      Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      sans-serif;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  a {
+    color: #0f6840;
+  }
+
+  .site-shell {
+    margin: 0 auto;
+    max-width: 960px;
+    padding: 0 1.25rem;
+  }
+
+  .site-header {
+    align-items: center;
+    border-bottom: 1px solid #d8e2dc;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    padding: 1rem 0;
+  }
+
+  .brand {
+    color: #17221b;
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .site-header nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  main {
+    padding: 2rem 0 0;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    line-height: 1.05;
+    margin: 0 0 1rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin: 2.5rem 0 0.75rem;
+  }
+
+  p,
+  li {
+    font-size: 1.05rem;
+    line-height: 1.65;
+  }
+
+  .eyebrow {
+    color: #527061;
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 0;
+    margin: 0 0 0.75rem;
+    text-transform: uppercase;
+  }
+
+  .content-body {
+    margin-top: 2rem;
+  }
+
+  .cta-list {
+    display: grid;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .affiliate-card {
+    border: 1px solid #d8e2dc;
+    border-radius: 8px;
+    padding: 1rem;
+  }
+
+  .button-link {
+    background: #126b43;
+    border-radius: 6px;
+    color: #fff;
+    display: inline-block;
+    font-weight: 800;
+    margin-top: 0.5rem;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+  }
+</style>

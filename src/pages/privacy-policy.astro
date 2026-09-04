@@ -1,0 +1,23 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const title = "Privacy Policy";
+const description =
+  "Privacy policy placeholder for Pet Insurance Genius, describing current limited data collection during the test phase.";
+const canonicalUrl = new URL("/privacy-policy/", Astro.site ?? Astro.url).toString();
+---
+
+<BaseLayout title={title} description={description} canonicalUrl={canonicalUrl} noindex={true}>
+  <article>
+    <h1>{title}</h1>
+    <p>
+      Placeholder legal copy for review: this site is currently built for an organic SEO
+      test and does not collect quote applications, sell insurance, or process policy
+      purchases on-site.
+    </p>
+    <p>
+      Outbound affiliate clicks may be measured to understand whether visitors continue
+      to third-party providers. Final privacy language should be reviewed before launch.
+    </p>
+  </article>
+</BaseLayout>

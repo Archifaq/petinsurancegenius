@@ -1,0 +1,24 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const title = "Advertising Disclosure";
+const description =
+  "Advertising disclosure for Pet Insurance Genius, including how affiliate relationships may affect compensation.";
+const canonicalUrl = new URL("/advertising-disclosure/", Astro.site ?? Astro.url).toString();
+---
+
+<BaseLayout title={title} description={description} canonicalUrl={canonicalUrl} noindex={false}>
+  <article>
+    <h1>{title}</h1>
+    <p>
+      Placeholder legal copy for review: Pet Insurance Genius may earn a commission if
+      you purchase a policy through links on this site. This compensation does not
+      affect our editorial opinions.
+    </p>
+    <p>
+      Pet Insurance Genius is not an insurance agency and does not sell insurance
+      policies. We provide informational content and may be compensated for referrals
+      to third-party insurance providers.
+    </p>
+  </article>
+</BaseLayout>

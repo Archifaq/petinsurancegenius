@@ -1,0 +1,31 @@
+---
+interface Props {
+  class?: string;
+}
+
+const className = Astro.props.class;
+---
+
+<aside class:list={["disclosure-banner", className]} aria-label="Advertising disclosure">
+  <strong>Advertising Disclosure:</strong>
+  We may earn a commission if you purchase a policy through links on this page. This does not affect our editorial opinions.
+  See our <a href="/advertising-disclosure/">Advertising Disclosure</a> page for details.
+</aside>
+
+<style>
+  .disclosure-banner {
+    border: 1px solid #b7d7c2;
+    border-radius: 8px;
+    background: #eef8f1;
+    color: #173522;
+    font-size: 1rem;
+    line-height: 1.55;
+    margin: 1rem 0 1.5rem;
+    padding: 1rem;
+  }
+
+  .disclosure-banner a {
+    color: #0a5b36;
+    font-weight: 700;
+  }
+</style>
