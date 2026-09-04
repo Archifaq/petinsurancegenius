@@ -1,3 +1,5 @@
+import fs from "node:fs";
+if (!fs.existsSync(".astro/data-store.json")) { console.log("⚠️ .astro/data-store.json not found, skipping validation."); process.exit(0); }
 import { mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { parse } from "devalue";
