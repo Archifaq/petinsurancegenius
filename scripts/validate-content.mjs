@@ -1,19 +1,17 @@
-import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
-import { dirname, join } from "node:path";
+import { existsSync, readFileSync } from "node:fs";
+import { join } from "node:path";
 import { parse } from "devalue";
+import {
+  collections,
+  contentRoot,
+  getMarkdownFiles,
+  normalizedPath,
+  readFrontmatter,
+  writeNoindexPaths
+} from "./noindex-paths.mjs";
 
 const contentStorePath = ".astro/data-store.json";
 const noindexPathsPath = ".astro/noindex-paths.json";
-const contentRoot = "src/content";
-const collections = [
-  "guide",
-  "breed",
-  "state",
-  "condition",
-  "carrier-review",
-  "comparison",
-  "blog"
-];
 
 if (!existsSync(contentStorePath)) {
   console.log(".astro/data-store.json not found, skipping validation.");
@@ -25,76 +23,6 @@ const slugs = new Map();
 const references = [];
 const noindexPaths = [];
 const errors = [];
-
-function normalizedPath(slug) {
-  return `/${slug.replace(/^\/+|\/+$/g, "")}/`;
-}
-
-function getMarkdownFiles(directory) {
-  const entries = readdirSync(directory, { withFileTypes: true });
-  const files = [];
-
-  for (const entry of entries) {
-    const entryPath = join(directory, entry.name);
-
-    if (entry.isDirectory()) {
-      files.push(...getMarkdownFiles(entryPath));
-    } else if (entry.isFile() && entry.name.endsWith(".md")) {
-      files.push(entryPath);
-    }
-  }
-
-  return files;
-}
-
-function readFrontmatter(filePath) {
-  const contents = readFileSync(filePath, "utf8");
-  const match = contents.match(/^---\n([\s\S]*?)\n---/);
-
-  if (!match) {
-    return {};
-  }
-
-  const frontmatter = {};
-  let activeArray;
-
-  for (const line of match[1].split("\n")) {
-    const keyMatch = line.match(/^([A-Za-z][A-Za-z0-9]*):\s*(.*)$/);
-    const arrayItemMatch = line.match(/^\s*-\s*["']?([^"']+)["']?\s*$/);
-
-    if (activeArray && arrayItemMatch) {
-      frontmatter[activeArray].push(arrayItemMatch[1].trim());
-      continue;
-    }
-
-    if (!keyMatch) {
-      continue;
-    }
-
-    const [, key, rawValue] = keyMatch;
-    activeArray = undefined;
-
-    if (rawValue.length === 0) {
-      if (key === "relatedSlugs") {
-        activeArray = key;
-        frontmatter[key] = [];
-      }
-      continue;
-    }
-
-    const value = rawValue.replace(/^["']|["']$/g, "").trim();
-
-    if (key === "slug" || key === "pillarSlug") {
-      frontmatter[key] = value;
-    }
-
-    if (key === "noindex" && /^(true|false)$/.test(value)) {
-      frontmatter.noindex = value === "true";
-    }
-  }
-
-  return frontmatter;
-}
 
 for (const collection of collections) {
   const entries = store.get(collection);
@@ -157,7 +85,6 @@ if (errors.length > 0) {
   process.exit(1);
 }
 
-mkdirSync(dirname(noindexPathsPath), { recursive: true });
-writeFileSync(noindexPathsPath, `${JSON.stringify([...new Set(noindexPaths)].sort(), null, 2)}\n`);
+writeNoindexPaths(noindexPathsPath);
 console.log(`Validated ${slugs.size} content slugs across ${collections.length} collections.`);
 console.log(`Wrote ${noindexPaths.length} noindex path(s) to ${noindexPathsPath}.`);
