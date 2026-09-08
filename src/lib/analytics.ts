@@ -61,11 +61,45 @@ async function trackPlausibleClick(context: App.Locals, event: OutboundClickEven
   );
 }
 
-async function trackGa4Click(_context: App.Locals, _event: OutboundClickEvent) {
-  // GA4 is intentionally behind the same interface and can be enabled when funnel depth is needed.
+async function trackGa4Click(context: App.Locals, event: OutboundClickEvent) {
+  const measurementId = getEnv(context, "GA4_MEASUREMENT_ID") ?? getEnv(context, "PUBLIC_GA4_MEASUREMENT_ID");
+  const apiSecret = getEnv(context, "GA4_API_SECRET");
+
+  if (!measurementId || !apiSecret) {
+    return;
+  }
+
+  const endpoint = new URL("https://www.google-analytics.com/mp/collect");
+  endpoint.searchParams.set("measurement_id", measurementId);
+  endpoint.searchParams.set("api_secret", apiSecret);
+
+  await withTimeout((signal) =>
+    fetch(endpoint.toString(), {
+      method: "POST",
+      signal,
+      headers: {
+        "Content-Type": "application/json",
+        "User-Agent": event.userAgent ?? "petinsurancegenius.com"
+      },
+      body: JSON.stringify({
+        client_id: crypto.randomUUID(),
+        events: [
+          {
+            name: "outbound_click",
+            params: {
+              carrier: event.carrierSlug,
+              carrier_name: event.carrierName,
+              destination_url: event.destinationUrl,
+              engagement_time_msec: 100
+            }
+          }
+        ]
+      })
+    })
+  );
 }
 
-export async function trackOutboundClick(context: App.Locals, event: OutboundClickEvent) {
+export async function trackOutboundClick<T extends OutboundClickEvent>(context: App.Locals, event: T) {
   try {
     const provider = getProvider(context);
 

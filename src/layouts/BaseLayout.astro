@@ -10,6 +10,7 @@ interface Props {
 }
 
 const { title, description, canonicalUrl, noindex = true, jsonLd = [] } = Astro.props;
+const ga4MeasurementId = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID?.trim();
 ---
 
 <!doctype html>
@@ -27,15 +28,26 @@ const { title, description, canonicalUrl, noindex = true, jsonLd = [] } = Astro.
     <meta property="og:type" content="article" />
     <meta name="twitter:card" content="summary" />
     {jsonLd.map((schema) => <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />)}
-    <!-- Google tag (gtag.js) -->
-  <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-RLFG2NVRK7"></script>
-  <script is:inline>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag("js", new Date());
-    gtag("config", "G-RLFG2NVRK7");
-  </script>
-</head>
+    {
+      ga4MeasurementId && (
+        <>
+          <!-- Google tag (gtag.js) -->
+          <script
+            is:inline
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(ga4MeasurementId)}`}
+          />
+          <script
+            is:inline
+            set:html={`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag("js", new Date());
+gtag("config", ${JSON.stringify(ga4MeasurementId)});`}
+          />
+        </>
+      )
+    }
+  </head>
   <body>
     <div class="site-shell">
       <header class="site-header">

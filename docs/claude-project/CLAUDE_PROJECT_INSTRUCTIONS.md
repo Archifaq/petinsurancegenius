@@ -48,13 +48,13 @@ When reviewing Codex output, prioritize:
 
 ## Current Baseline
 
-Checkpoint 5 plus its follow-up pillar-link fix is the latest accepted
-implementation baseline. The site currently has Astro 5.18.2, official `glob()`
-content loaders, seven flat URL content collections, 36 unique content slugs,
-sitemap noindex exclusion, robots support, disclosure/privacy/guide routes, all
-collection templates in `src/pages/[slug].astro`, two species pillar pages, six
-content pages set to `noindex: false`, and 30 content pages still held at
-`noindex: true`.
+Checkpoint 7 is the latest accepted implementation baseline, and Checkpoint 8 is
+the latest submitted checkpoint awaiting review. The site currently has Astro
+5.18.2, official `glob()` content loaders, seven flat URL content collections, 36
+unique content slugs, sitemap noindex exclusion, robots support,
+disclosure/privacy/guide routes, all collection templates in `src/pages/[slug].astro`,
+two species pillar pages, 27 content pages currently set to `noindex: false`, and
+9 content pages still held at `noindex: true` in the submitted Checkpoint 8 state.
 
 ## Hard Stops
 

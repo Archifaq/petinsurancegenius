@@ -3,7 +3,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 
 const title = "Privacy Policy";
 const description =
-  "Privacy policy placeholder for Pet Insurance Genius, describing current limited data collection during the test phase.";
+  "Privacy policy placeholder for Pet Insurance Genius, describing analytics and affiliate-click measurement during the test phase.";
 const canonicalUrl = new URL("/privacy-policy/", Astro.site ?? Astro.url).toString();
 ---
 
@@ -16,8 +16,17 @@ const canonicalUrl = new URL("/privacy-policy/", Astro.site ?? Astro.url).toStri
       purchases on-site.
     </p>
     <p>
-      Outbound affiliate clicks may be measured to understand whether visitors continue
-      to third-party providers. Final privacy language should be reviewed before launch.
+      The site may use a third-party analytics provider, including Google Analytics
+      (GA4), to measure site-wide page views and general usage patterns. If enabled,
+      that analytics provider may use cookies or similar technologies to collect usage
+      data such as pages viewed, browser information, approximate location, and
+      interaction timing.
+    </p>
+    <p>
+      Outbound affiliate clicks may also be measured to understand whether visitors
+      continue to third-party providers. Those outbound-click events may include the
+      selected partner identifier and the destination URL. Final privacy language should
+      be reviewed before launch.
     </p>
   </article>
 </BaseLayout>

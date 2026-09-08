@@ -24,6 +24,7 @@ export const GET: APIRoute = async ({ locals, params, request }) => {
     carrierName: offer.carrierName,
     destinationUrl: offer.destinationUrl,
     sourcePath,
+    cookieHeader: request.headers.get("cookie") ?? undefined,
     userAgent: request.headers.get("user-agent") ?? undefined
   });
 
