@@ -36,6 +36,13 @@ into the Checkpoint 8 baseline before acceptance.
 - `/go/[carrier]` remains the only place where real affiliate destination URLs
   are resolved.
 - Affiliate click tracking remains wrapped in try/catch in the redirect handler.
+- The pre-launch hardcoded gtag.js blocker has been resolved via Option B:
+  site-wide GA4 pageview tracking is gated behind `PUBLIC_GA4_MEASUREMENT_ID`,
+  which is unset by default and must be set in Cloudflare Pages production
+  environment to activate.
+- `src/lib/analytics.ts` outbound-click provider branches remain mutually
+  exclusive: Plausible is the default path, `ga4` is opt-in, and `none` disables
+  outbound-click analytics.
 
 ## Current Content Baseline
 
@@ -152,6 +159,12 @@ flipping `sample-partner.md` in a future checkpoint until the owner answers this
 - Monetized pages render `DisclosureBanner` before affiliate-linked content.
 - `BaseLayout` renders the site-wide footer on every page.
 - Footer includes the "not an insurance agency" disclaimer.
+- `BaseLayout` renders the GA4 pageview tag only when
+  `PUBLIC_GA4_MEASUREMENT_ID` is set; there is no committed hardcoded GA4
+  measurement ID in the layout.
+- `src/pages/privacy-policy.astro` discloses optional site-wide analytics via a
+  third-party analytics provider, including GA4, alongside outbound
+  affiliate-click measurement.
 
 ## Checkpoint 9 Verification
 
@@ -163,6 +176,17 @@ flipping `sample-partner.md` in a future checkpoint until the owner answers this
 - Built HTML pillar-link checks passed for every newly indexable page.
 - Built carrier-review/comparison HTML was checked for absence of `Review`,
   `Product`, `Rating`, and `AggregateRating` JSON-LD types.
+
+## Pre-Launch Deployment Status
+
+- The gtag.js / GA4 compliance fix was the last pre-launch merge blocker.
+- The site is clear for first production deployment pending the owner's
+  Cloudflare Pages production environment setup.
+- To activate site-wide GA4 pageview tracking in production, set
+  `PUBLIC_GA4_MEASUREMENT_ID` in Cloudflare Pages production environment.
+- Do not set `GA4_API_SECRET` unless the owner separately decides to switch
+  outbound-click tracking from the default Plausible path to
+  `ANALYTICS_PROVIDER=ga4`.
 
 ## Review Posture for Next Checkpoint
 
